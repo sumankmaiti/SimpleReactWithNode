@@ -62,9 +62,10 @@
   margin-left: 8px;
   color: #fff;
   font-size: 1rem;
+
 }
 
-.sidedrawer__links > li > a:hover .sidedrawer__cartbadge {
+.sidedrawer__links > li > a:hover.sidedrawer__cartbadge {
   background-color: #fff;
   color: #171717;
 }
