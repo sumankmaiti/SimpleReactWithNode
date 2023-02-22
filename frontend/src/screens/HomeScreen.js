@@ -17,6 +17,7 @@ const HomeScreen = () => {
 
 	const getProducts = useSelector((state) => state.getProducts)
 	const { loading, products, error } = getProducts
+	console.log(products)
 
 	return (
 		<div className='homescreen'>

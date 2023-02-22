@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as actionTypes from "../constants/productConstants"
 
-export const fetchProducts = () => async (dispatch) => {
+export const fetchProducts = () => (dispatch) => {
 	// try {
 	// 	dispatch({
 	// 		type: actionTypes.GET_PRODUCTS_REQUEST
@@ -25,16 +25,18 @@ export const fetchProducts = () => async (dispatch) => {
 		type: actionTypes.GET_PRODUCTS_REQUEST
 	})
 	axios.get('https://fakestoreapi.com/products')
+	// axios.get('https://dummyjson.com/products')
 	.then((response) => {
-		return {
+		console.log(response.data);
+		dispatch({
 			type: actionTypes.GET_PRODUCTS_SUCCESS,
 			payload: response.data
-		}
+		})
 	})
 	.catch((response) => {
-		return {
+		dispatch({
 			type: actionTypes.GET_PRODUCTS_FAIL,
 			payload: response
-		}
+		})
 	})
 }

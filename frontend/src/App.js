@@ -10,24 +10,24 @@ import Backdrop from './components/Backdrop';
 
 //screens
 import HomeScreen from "./screens/HomeScreen"
-// import ProductScreen from './screens/ProductScreen'
+import ProductScreen from './screens/ProductScreen'
 // import CartScreen from './screens/CartScreen'
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false)
-
+  
   return (
     <BrowserRouter>
-      <Navbar click={() => setSideToggle(true) } />
-      <SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
-	  <Backdrop show={sideToggle} click={() => setSideToggle(false)} />
-	  <main className='app'>
-		<Routes>
-			<Route exact path='/' component={HomeScreen} />
-			{/* <Route exact path='/product/:id' component={ProductScreen} /> */}
-			{/* <Route exact path='/cart' component={CartScreen} /> */}
-		</Routes>
-	  </main>
+		<Navbar click={() => setSideToggle(true) } />
+		<SideDrawer show={sideToggle} click={() => setSideToggle(false)} />
+		<Backdrop show={sideToggle} click={() => setSideToggle(false)} />
+		<main className='app'>
+			<Routes>
+				<Route exact path='/' element={<HomeScreen />} />
+				<Route exact path='/product/:id' element={<ProductScreen />} />
+				{/* <Route exact path='/cart' component={CartScreen} /> */}
+			</Routes>
+		</main>
     </BrowserRouter>
   )
 }
