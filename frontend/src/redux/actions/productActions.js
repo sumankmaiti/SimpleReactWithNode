@@ -24,13 +24,12 @@ export const fetchProducts = () => (dispatch) => {
 	dispatch({
 		type: actionTypes.GET_PRODUCTS_REQUEST
 	})
-	axios.get('https://fakestoreapi.com/products')
-	// axios.get('https://dummyjson.com/products')
+	// axios.get('https://fakestoreapi.com/products')
+	axios.get('https://dummyjson.com/products')
 	.then((response) => {
-		console.log(response.data);
 		dispatch({
 			type: actionTypes.GET_PRODUCTS_SUCCESS,
-			payload: response.data
+			payload: response.data.products
 		})
 	})
 	.catch((response) => {
@@ -39,4 +38,18 @@ export const fetchProducts = () => (dispatch) => {
 			payload: response
 		})
 	})
+}
+
+
+export const fetchProductDetails = (id) => (dispatch) => {
+	console.log('-----',id);
+	dispatch({type: actionTypes.GET_PRODUCT_DETAILS_REQUEST})
+
+	axios.get(`https://dummyjson.com/products/${id}`)
+	.then((response) => {
+		console.log(response.data);
+		dispatch({type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS, payload: response.data})
+	})
+	.catch((response) => 
+	dispatch({type: actionTypes.GET_PRODUCT_DETAILS_FAIL, payload: response}))
 }

@@ -17,7 +17,6 @@ const HomeScreen = () => {
 
 	const getProducts = useSelector((state) => state.getProducts)
 	const { loading, products, error } = getProducts
-	console.log(products)
 
 	return (
 		<div className='homescreen'>
@@ -33,7 +32,7 @@ const HomeScreen = () => {
 								name = {product.title}
 								description = {product.description}
 								price = {product.price}
-								imageUrl = {product.image}
+								imageUrl = {product.images[0]}
 								productID = {product.id}
 							/>
 						))
