@@ -24,13 +24,13 @@ export const fetchProducts = () => (dispatch) => {
 	dispatch({
 		type: actionTypes.GET_PRODUCTS_REQUEST
 	})
-	axios.get('https://fakestoreapi.com/products')
-	// axios.get('https://dummyjson.com/products')
+	// axios.get('https://fakestoreapi.com/products')
+	axios.get('https://dummyjson.com/products')
 	.then((response) => {
 		console.log(response.data);
 		dispatch({
 			type: actionTypes.GET_PRODUCTS_SUCCESS,
-			payload: response.data
+			payload: response.data.products
 		})
 	})
 	.catch((response) => {
