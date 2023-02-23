@@ -5,32 +5,21 @@ import { useParams } from 'react-router-dom'
 import './ProductScreen.css'
 import {fetchProductDetails} from '../redux/actions/productActions'
 
-function usePrevious(value) {
-	const ref = useRef(value);
-	useEffect(() => {
-	  ref.current = value;
-	});
-	return ref.current;
-  }
 
 const ProductScreen = () => {
 	const [qty, setQty] = useState(1)
 	const dispatch = useDispatch()
-	const params = useParams()
-	const [val, setVal] = useState(0);
-	const prevVal = usePrevious(val);
-	
+	let params = useParams()
+	console.log(params);
+	// problm is we need to provide the paramas value to 0 first then use effect will find the diff
 	useEffect(() => {
-		console.log('useeffect');
-		if (prevVal !== params.id){
-		dispatch(fetchProductDetails(params.id))}
-		setVal(params.id)
-	}, [dispatch, params, prevVal])
+		// console.log('useeffect', params);
+		dispatch(fetchProductDetails(1))
+	}, [dispatch, ])
 
 	const getProductDetails = useSelector((state) => state.getProductDetails)
 	const {loading, productDetails, error} = getProductDetails
 
-	console.log('mmmm', params.id);
 	return (
 		<div className='productscreen'>
 			{loading
