@@ -28,6 +28,7 @@ export const getProductDetailsReducer = (state = { productDetails: {} }, action)
         case actionTypes.GET_PRODUCT_DETAILS_REQUEST:
             return {
                 loading: true,
+				productDetails: {}
             }
         case actionTypes.GET_PRODUCT_DETAILS_SUCCESS:
             return {
@@ -47,3 +48,14 @@ export const getProductDetailsReducer = (state = { productDetails: {} }, action)
             return state
     }
 }
+
+// export const getIdReducer = (state = {id: 0}, action) => {
+// 	switch(action.type) {
+// 		case actionTypes.SET_ID:
+// 			return {
+// 				id: action.payload
+// 			}
+// 		default:
+// 			return state
+// 	}
+// }

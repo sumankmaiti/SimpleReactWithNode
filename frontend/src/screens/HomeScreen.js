@@ -1,6 +1,6 @@
 import './HomeScreen.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 //Actions
@@ -12,10 +12,9 @@ import Product from '../components/Product'
 
 const HomeScreen = () => {
 	const dispatch = useDispatch()
-	let params = useParams()
-	console.log('home screen', params);
 
 	useEffect(() => {
+		console.log('home screen use effect');
 		dispatch(fetchProducts())
 	}, [dispatch])
 

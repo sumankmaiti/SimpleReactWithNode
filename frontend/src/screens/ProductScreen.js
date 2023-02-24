@@ -1,24 +1,34 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation, useMatch } from 'react-router-dom'
+import axios from 'axios'
 
 import './ProductScreen.css'
 import {fetchProductDetails} from '../redux/actions/productActions'
+import * as actionTypes from "../redux/constants/productConstants"
 
 
 const ProductScreen = () => {
 	const [qty, setQty] = useState(1)
 	const dispatch = useDispatch()
-	let params = useParams()
-	console.log(params);
-	// problm is we need to provide the paramas value to 0 first then use effect will find the diff
+	const [st, setSt] = useState(0)
+	console.log('product screen 1',st);
+	const p = parseInt(useParams().id)
+
+	
+	if(p !== st) {
+		setSt(p)
+	}
 	useEffect(() => {
-		// console.log('useeffect', params);
-		dispatch(fetchProductDetails(1))
-	}, [dispatch, ])
+		dispatch(fetchProductDetails(st))
+		// setSt(p)
+	},[st, dispatch])
+	console.log('product screen 2',st);
 
 	const getProductDetails = useSelector((state) => state.getProductDetails)
 	const {loading, productDetails, error} = getProductDetails
+
+	// setId(id)
 
 	return (
 		<div className='productscreen'>
