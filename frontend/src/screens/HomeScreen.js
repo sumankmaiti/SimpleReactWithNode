@@ -1,7 +1,6 @@
 import './HomeScreen.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 
 //Actions
 import { fetchProducts } from '../redux/actions/productActions'
@@ -20,6 +19,7 @@ const HomeScreen = () => {
 
 	const getProducts = useSelector((state) => state.getProducts)
 	const { loading, products, error } = getProducts
+	console.log('Home screen', loading, products, error);
 
 	return (
 		<div className='homescreen'>

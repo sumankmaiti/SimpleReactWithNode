@@ -1,34 +1,30 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useLocation, useMatch } from 'react-router-dom'
-import axios from 'axios'
+import { useParams} from 'react-router-dom'
 
 import './ProductScreen.css'
 import {fetchProductDetails} from '../redux/actions/productActions'
-import * as actionTypes from "../redux/constants/productConstants"
 
 
 const ProductScreen = () => {
-	const [qty, setQty] = useState(1)
+	const [cart, setCart] = useState(1)
+	const [pid, setPid] = useState(0)
 	const dispatch = useDispatch()
-	const [st, setSt] = useState(0)
-	console.log('product screen 1',st);
-	const p = parseInt(useParams().id)
-
+	const param = useParams()
 	
-	if(p !== st) {
-		setSt(p)
+	if(pid !== param.id) {
+		dispatch(fetchProductDetails(param.id))
+		setPid(param.id)
 	}
-	useEffect(() => {
-		dispatch(fetchProductDetails(st))
-		// setSt(p)
-	},[st, dispatch])
-	console.log('product screen 2',st);
 
-	const getProductDetails = useSelector((state) => state.getProductDetails)
-	const {loading, productDetails, error} = getProductDetails
+	const product = useSelector((state) => state.getProductDetails)
+	const {loading, productDetails, error} = product
+	console.log('product screen ',param.id, pid, cart, loading, productDetails, error);
 
-	// setId(id)
+	const addToCartHandler = () => {
+		dispatch(addToCart(productDetails.id, cart))
+		history.push('/cart')
+	}
 
 	return (
 		<div className='productscreen'>
@@ -53,7 +49,7 @@ const ProductScreen = () => {
 								<p> Price: <span> ${productDetails.price} </span> </p>
 								<p> Status: <span> {productDetails.stock > 0 ? 'In Stock' : 'Out of stock'} </span> </p>
 								<p> Quantity: 
-									<select value={qty} onChange={(e) => setQty(e.target.value)}>
+									<select value={cart} onChange={(e) => setCart(e.target.value)}>
 										{[...Array(productDetails.stock).keys()].map((i) => {
 											return <option key={i + 1} value={i + 1}>
 												{i + 1}
@@ -61,6 +57,11 @@ const ProductScreen = () => {
 											}
 										)}
 									</select>
+								</p>
+								<p>
+									<button type='button' onClick={addToCartHandler}>
+										Add To Cart
+									</button>
 								</p>
 							</div>
 						</div>

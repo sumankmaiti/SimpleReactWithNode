@@ -1,7 +1,7 @@
 import './App.css';
 
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, useMatch, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 //components
 import Navbar from './components/Navbar';
@@ -24,8 +24,8 @@ function App() {
 			<Backdrop show={sideToggle} click={() => setSideToggle(false)} />
 			<main className='app'>
 				<Routes>
-					<Route exact path='/' element={<HomeScreen />} />
-					<Route exact path='/product/:id' element={<ProductScreen />} />		
+					<Route path='/' element={<HomeScreen />} />
+					<Route path='/product/:id' element={<ProductScreen />} />		
 					{/* <Route exact path='/cart' component={CartScreen} /> */}
 				</Routes>
 			</main>
@@ -33,4 +33,5 @@ function App() {
 	)
 }
 
-export default App;
+// export default withRouter(App);
+export default App
