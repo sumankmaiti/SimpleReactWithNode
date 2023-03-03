@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 const Navbar = ({ click }) => {
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-
+	console.log('nav bar ', cartItems);
     const getCartCount = () => {
         return cartItems.reduce((total, item) => Number(item.qty) + total, 0)
     }

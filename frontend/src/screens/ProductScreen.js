@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams} from 'react-router-dom'
+import { useParams, useNavigate} from 'react-router-dom'
 
 import './ProductScreen.css'
 import {fetchProductDetails} from '../redux/actions/productActions'
+import { addToCart } from '../redux/actions/cartActions'
 
 
 const ProductScreen = () => {
@@ -11,6 +12,7 @@ const ProductScreen = () => {
 	const [pid, setPid] = useState(0)
 	const dispatch = useDispatch()
 	const param = useParams()
+	const nevigate = useNavigate()
 	
 	if(pid !== param.id) {
 		dispatch(fetchProductDetails(param.id))
@@ -23,7 +25,9 @@ const ProductScreen = () => {
 
 	const addToCartHandler = () => {
 		dispatch(addToCart(productDetails.id, cart))
-		history.push('/cart')
+		nevigate('/cart')
+		// redirect('/cart')
+		
 	}
 
 	return (

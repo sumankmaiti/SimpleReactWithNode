@@ -9,26 +9,26 @@ export const cartReducer = (state = CARRT_INITIAL_STATE, action) => {
         case actionTypes.ADD_TO_CART:
             const item  = action.payload;
 
-            const isItemExist = state.cartItems.find((existingItem) => existingItem.productID === item.productID)
-
+            const isItemExist = state.cartItems.find((existingItem) => existingItem.id === item.id)
+			console.log('cart reducer: state:', state, 'item:', item, 'isitemexist:', isItemExist);
             if (isItemExist) {
                 console.log('item found');
                 return {
-                    ...state, cartItems: state.cartItems.map((existingItem) => existingItem.productID === item.productID ? item : existingItem)
+                    ...state, cartItems: state.cartItems.map((existingItem) => existingItem.id === item.id ? item : existingItem)
                 }
             }
 
             else {
-                console.log('added');
+                console.log('cart reducer added');
                 return {
-                    ...state, cartItems: state.cartItems.push(item)
-                    // ...state, cartItems: [...state.cartItems, item]
+                    // ...state, cartItems: state.cartItems.push(item)
+                    ...state, cartItems: [...state.cartItems, item]
                 }
             }
         case actionTypes.REMOVE_FROM_CART:
             console.log('removed');
             return {
-                ...state, cartItems: state.cartItems.filter((existingItem) => existingItem.productID !== item.productID)
+                ...state, cartItems: state.cartItems.filter((existingItem) => existingItem.id !== item.id)
             }
         default:
             return state
