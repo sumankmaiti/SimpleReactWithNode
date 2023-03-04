@@ -11,7 +11,7 @@ import Backdrop from './components/Backdrop';
 //screens
 import HomeScreen from "./screens/HomeScreen"
 import ProductScreen from './screens/ProductScreen'
-// import CartScreen from './screens/CartScreen'
+import CartScreen from './screens/CartScreen'
 
 function App() {
 	const [sideToggle, setSideToggle] = useState(false)
@@ -26,7 +26,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<HomeScreen />} />
 					<Route path='/product/:id' element={<ProductScreen />} />		
-					{/* <Route exact path='/cart' component={CartScreen} /> */}
+					<Route exact path='/cart' component={CartScreen} />
 				</Routes>
 			</main>
 		</BrowserRouter>
