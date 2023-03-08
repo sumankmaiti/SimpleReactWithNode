@@ -19,11 +19,11 @@ const CartScreen = () => {
 	}
 
 	const getCartCount = () => {
-		cartItems.reduce((qty, item) => qty + Number(item.qty), 0)
+		return cartItems.reduce((qty, item) => qty + Number(item.qty), 0)
 	}
 
 	const getCartSubtotal = () => {
-		cartItems.reduce((price, item) => price + item.price * item.qty, 0).toFixed(2)
+		return cartItems.reduce((price, item) => price + item.price * item.qty, 0).toFixed(2)
 	}
 
 	return (

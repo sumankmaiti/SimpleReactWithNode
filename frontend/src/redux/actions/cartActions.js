@@ -3,7 +3,7 @@ import * as actionTypes from '../constants/cartConstants'
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
 	const { data } = await axios.get(`https://dummyjson.com/products/${productId}`)
-	console.log('cart actions',data)
+	console.log('cart actions: before add to cart dispatch',data)
 
 	dispatch({
 		type: actionTypes.ADD_TO_CART,
@@ -16,7 +16,7 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
 			qty,
 		}
 	})
-	console.log('cart actions', getState().cart.cartItems);
+	console.log('cart actions: after add to cart dispatch', getState().cart.cartItems);
 	localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
 }
 

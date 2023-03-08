@@ -20,8 +20,8 @@ const CartItem = ({item, qtyChangeHandler, removeHandler}) => {
 						return <option key={item + 1} value={item + 1}> {item + 1} </option>
 					})}	
 			</select>
-			<button className='cartItem__deleteBtn' onClick={removeHandler(item.id)}>
-				<i className='fas fa-trash' />
+			<button className='cartItem__deleteBtn' onClick={() => removeHandler(item.id)}>
+				<i className='fa fa-trash' aria-hidden="true"> Remove </i>
 			</button>
 		</div>
 	)

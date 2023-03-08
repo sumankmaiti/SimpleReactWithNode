@@ -26,7 +26,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<HomeScreen />} />
 					<Route path='/product/:id' element={<ProductScreen />} />		
-					<Route exact path='/cart' component={CartScreen} />
+					<Route exact path='/cart' element={<CartScreen />} />
 				</Routes>
 			</main>
 		</BrowserRouter>
