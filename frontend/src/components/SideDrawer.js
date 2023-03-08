@@ -1,4 +1,5 @@
 import './SideDrawer.css'
+import "font-awesome/css/font-awesome.min.css"
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -23,7 +24,7 @@ const SideDrawer = ({show, click}) => {
             <ul className='sidedrawer__links' onClick={click}>
                 <li>
                     <Link to='/cart'>
-                        <i className='fas fa-shopping-cart'>  </i>
+                        <i className='fa fa-shopping-cart'>  </i>
                         <span>
                             Cart {" "}
                             <span className='sidedrawer__cartbadge'>{getCartCount()}</span>

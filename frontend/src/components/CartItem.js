@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './CartItem.css'
+import "font-awesome/css/font-awesome.min.css"
 
 const CartItem = ({item, qtyChangeHandler, removeHandler}) => {
 	return (
@@ -21,7 +22,7 @@ const CartItem = ({item, qtyChangeHandler, removeHandler}) => {
 					})}	
 			</select>
 			<button className='cartItem__deleteBtn' onClick={() => removeHandler(item.id)}>
-				<i className='fa fa-trash' aria-hidden="true"> Remove </i>
+				<i className='fa fa-trash' aria-hidden="true"></i>
 			</button>
 		</div>
 	)
