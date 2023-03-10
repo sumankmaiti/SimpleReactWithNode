@@ -13,7 +13,7 @@ const productSchema = mongoose.Schema({
 		type: Number,
 		required: true
 	},
-	stock: {
+	countInStock: {
 		type: Number,
 		required: true
 	},
@@ -23,6 +23,6 @@ const productSchema = mongoose.Schema({
 	}
 })
 
-const Product = mongoose.model('product', productSchema)
+const Product = mongoose.model('allProduct', productSchema)
 
 module.exports = Product

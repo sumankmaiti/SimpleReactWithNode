@@ -31,12 +31,12 @@ const HomeScreen = () => {
 						? <h2> { error } </h2>
 						: products.map((product) => (
 						 	<Product 
-								key = {product.id}	
-								name = {product.title}
+								key = {product._id}	
+								name = {product.name}
 								description = {product.description}
 								price = {product.price}
-								imageUrl = {product.images[0]}
-								productID = {product.id}
+								imageUrl = {product.imageUrl}
+								productID = {product._id}
 							/>
 						))
 				}

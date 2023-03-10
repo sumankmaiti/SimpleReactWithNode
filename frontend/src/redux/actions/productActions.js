@@ -26,7 +26,7 @@ export const fetchProducts = () => (dispatch) => {
 	})
 	// axios.get('https://fakestoreapi.com/products')
 	// axios.get('https://dummyjson.com/products')
-	axios.get('/api/products')
+	axios.get('http://localhost:5000/api/products')
 	.then((response) => {
 		dispatch({
 			type: actionTypes.GET_PRODUCTS_SUCCESS,
