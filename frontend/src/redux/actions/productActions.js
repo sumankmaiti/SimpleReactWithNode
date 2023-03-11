@@ -48,7 +48,8 @@ export const fetchProductDetails = (id) => (dispatch) => {
 		type: actionTypes.GET_PRODUCT_DETAILS_REQUEST
 	})
 
-	axios.get(`https://dummyjson.com/products/${id}`)
+	// axios.get(`https://dummyjson.com/products/${id}`)
+	axios.get(`http://localhost:5000/api/products/${id}`)
 	.then((response) => {
 		// console.log(response.data);
 		dispatch({type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS, payload: response.data})

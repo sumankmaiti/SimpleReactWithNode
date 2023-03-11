@@ -40,7 +40,7 @@ const CartScreen = () => {
 						:
 						cartItems.map((item) => 
 							<CartItem 
-								key={item.id} 
+								key={item._id} 
 								item={item}
 								qtyChangeHandler={qtyChangeHandler}
 								removeHandler={removeHandler}

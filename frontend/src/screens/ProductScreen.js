@@ -24,7 +24,7 @@ const ProductScreen = () => {
 	console.log('product screen ',param.id, pid, cart, loading, productDetails, error);
 
 	const addToCartHandler = () => {
-		dispatch(addToCart(productDetails.id, cart))
+		dispatch(addToCart(productDetails._id, cart))
 		nevigate('/cart')
 		// redirect('/cart')
 		
@@ -40,10 +40,10 @@ const ProductScreen = () => {
 					<>
 						<div className='productscreen__left'>
 							<div className='left__image'>
-								<img src={productDetails.images[0]} alt={productDetails.title} />
+								<img src={productDetails.imageUrl} alt={productDetails.Name} />
 							</div>
 							<div className='left__info'>
-								<p className='left__name'> {productDetails.title} </p>
+								<p className='left__name'> {productDetails.name} </p>
 								<p> Price: ${productDetails.price} </p>
 								<p> Description: {productDetails.description} </p>
 							</div>
@@ -51,10 +51,10 @@ const ProductScreen = () => {
 						<div className='productscreen__right'> 
 							<div className='right__info'>
 								<p> Price: <span> ${productDetails.price} </span> </p>
-								<p> Status: <span> {productDetails.stock > 0 ? 'In Stock' : 'Out of stock'} </span> </p>
+								<p> Status: <span> {productDetails.countInStock > 0 ? 'In Stock' : 'Out of stock'} </span> </p>
 								<p> Quantity: 
 									<select value={cart} onChange={(e) => setCart(e.target.value)}>
-										{[...Array(productDetails.stock).keys()].map((i) => {
+										{[...Array(productDetails.countInStock).keys()].map((i) => {
 											return <option key={i + 1} value={i + 1}>
 												{i + 1}
 											</option>

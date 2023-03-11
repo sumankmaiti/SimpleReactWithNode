@@ -1,17 +1,25 @@
 .productscreen {
-	max-width: 1300px;
+	max-width: 100%;
 	margin: 1rem auto;
 	display: flex;
+	/* flex-direction: column; */
   }
   
   .productscreen__left {
 	display: flex;
-	flex: 0.8;
+	width: 80%;
+	/* flex: 0.8; */
   }
   
   .left__image {
 	margin: 1rem;
 	flex: 0.6;
+  }
+
+  .left__image > img {
+	width: 100%;
+	/* height: 170px; */
+	object-fit: contain;
   }
   
   .left__info {
